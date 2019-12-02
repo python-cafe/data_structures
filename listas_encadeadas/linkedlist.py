@@ -87,10 +87,10 @@ class LinkedList:
                 if pointer.data == elem:
                     ancestor.next = pointer.next
                     pointer.next = None
+                    self._size = self._size - 1
+                    return True
                 ancestor = pointer
                 pointer = pointer.next
-            self._size = self._size - 1
-            return True
         raise ValueError("{} is not in list".format(elem))
 
     def __repr__(self):
