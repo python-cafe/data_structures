@@ -1,16 +1,19 @@
-from node import Node
+# Nó para alocação de uma Fila
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
-# inserir na fila
-# remover da fila
-# observar o primeiro da fila
+# Classe que define uma Fila
 class Queue:
     def __init__(self):
         self.first = None
         self.last = None
         self._size = 0
 
+    # inserir na fila
     def push(self, elem):
-        #insere um elemento na pilha
+        """Insere um elemento na fila"""
         node = Node(elem)
         if self.last is None:
             self.last = node
@@ -23,9 +26,9 @@ class Queue:
 
         self._size = self._size + 1
 
-
+    # remover da fila
     def pop(self):
-        # remove o elemento do topo da pilha
+        """Remove o elemento do topo da pilha""" 
         if self._size > 0:
             elem = self.first.data
             self.first = self.first.next
@@ -37,9 +40,9 @@ class Queue:
             return elem
         raise IndexError("The queue is empty")
 
-
+    # observar o primeiro da fila
     def peek(self):
-        # retorna o topo sem remover
+        """Retorna o topo sem remover"""
         if self._size > 0:
             elem = self.first.data
             return elem
