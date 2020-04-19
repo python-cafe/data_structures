@@ -1,6 +1,10 @@
 # Programação Dinâmica - Estruturas de Dados
 # Implementação de uma árvore binária e percursos na árvore
 
+from queue import Queue
+
+
+ROOT = "root"
 # Vídeo Implementando uma árvore binária: https://youtu.be/6E169kShoNU
 class Node:
     def __init__(self, data):
@@ -65,6 +69,21 @@ class BinaryTree:
         print(node, end=' ')
         if node.right:
             self.inorder_traversal(node.right)
+
+    # Vídeo "Percurso em Nível em Árvore Binária": 
+    def levelorder_traversal(self, node=ROOT):
+        if node == ROOT:
+            node = self.root
+
+        queue = Queue()
+        queue.push(node)
+        while len(queue):
+            node = queue.pop()
+            if node.left:
+                queue.push(node.left)
+            if node.right:
+                queue.push(node.right)
+            print(node, end=" ")
 
 # Vídeo "Árvore Binária de Busca": https://youtu.be/rviJVdt_icw
 class BinarySearchTree(BinaryTree):
