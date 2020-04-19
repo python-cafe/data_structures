@@ -3,7 +3,6 @@
 
 from queue import Queue
 
-
 ROOT = "root"
 # Vídeo Implementando uma árvore binária: https://youtu.be/6E169kShoNU
 class Node:
@@ -115,6 +114,20 @@ class BinarySearchTree(BinaryTree):
         if value < node.data:
             return self._search(value, node.left)
         return self._search(value, node.right)
+
+    def min(self, node=ROOT):
+        if node == ROOT:
+            node = self.root
+        while node.left:
+            node = node.left
+        return node.data
+
+    def max(self, node=ROOT):
+        if node == ROOT:
+            node = self.root
+        while node.right:
+            node = node.right
+        return node.data
     
     # def search(self, value, node=0):
     #     if node == 0:

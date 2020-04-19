@@ -17,11 +17,15 @@ def example_tree(size=42):
         tree.insert(v)
     return tree
 
-bst = example_tree()
+bst = random_tree()
 bst.inorder_traversal()
 
 print('\n----')
 bst.levelorder_traversal()
+
+print("\n-------")
+print("Máximo:", bst.max())
+print("Mínimo:", bst.min())
 
 # print('\n-----')
 # items = [1, 3, 981, 510, 1000]
