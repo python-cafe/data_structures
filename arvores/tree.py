@@ -115,6 +115,7 @@ class BinarySearchTree(BinaryTree):
             return self._search(value, node.left)
         return self._search(value, node.right)
 
+    # Vídeo "Máximo e Mínimo de Árvore Binária de Busca": 
     def min(self, node=ROOT):
         if node == ROOT:
             node = self.root
