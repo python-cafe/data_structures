@@ -1,10 +1,12 @@
 # Programação Dinâmica - Estruturas de Dados
-# Implementação de uma árvore binária e percursos na árvore
+# Implementação de Árvores e seus algoritmos - by hallpaz
+# https://youtube.com/programacaodinamica
 
 from queue import Queue
 
+
 ROOT = "root"
-# Vídeo Implementando uma árvore binária: https://youtu.be/6E169kShoNU
+# Implementando uma Árvore Binária: https://youtu.be/6E169kShoNU
 class Node:
     def __init__(self, data):
         self.data = data
@@ -38,6 +40,7 @@ class BinaryTree:
             self.simetric_traversal(node.right)
             print(')', end='')
     
+    # Percurso em PÓS ORDEM em ÁRVORE BINÁRIA: https://youtu.be/QC8oiQnlYos
     def postorder_traversal(self, node=None):
         if node is None:
             node = self.root
@@ -69,7 +72,7 @@ class BinaryTree:
         if node.right:
             self.inorder_traversal(node.right)
 
-    # Vídeo "Percurso em Nível em Árvore Binária": 
+    # Percurso em Nível em Árvore Binária: https://youtu.be/UOK7nS2E9xM
     def levelorder_traversal(self, node=ROOT):
         if node == ROOT:
             node = self.root
@@ -84,7 +87,7 @@ class BinaryTree:
                 queue.push(node.right)
             print(node, end=" ")
 
-# Vídeo "Árvore Binária de Busca": https://youtu.be/rviJVdt_icw
+# Árvore Binária de Busca: https://youtu.be/rviJVdt_icw
 class BinarySearchTree(BinaryTree):
     
     def insert(self, value):
@@ -115,7 +118,7 @@ class BinarySearchTree(BinaryTree):
             return self._search(value, node.left)
         return self._search(value, node.right)
 
-    # Vídeo "Máximo e Mínimo de Árvore Binária de Busca": 
+    # Encontrando o MAIOR e o MENOR elemento numa ÁRVORE Binária de Busca: https://youtu.be/Q9s_XyJpHTI
     def min(self, node=ROOT):
         if node == ROOT:
             node = self.root
@@ -130,29 +133,39 @@ class BinarySearchTree(BinaryTree):
             node = node.right
         return node.data
 
+    # REMOVENDO da Árvore Binária de Busca: https://youtu.be/dyLwOXBA3Ws
     def remove(self, value, node=ROOT):
+        # Se for o valor padrão, executa a partir da raiz
         if node == ROOT:
             node = self.root
+        # Se desceu até um ramo nulo, não há nada a fazer
         if node is None:
             return node
+        # Se o valor for menor, desce à esquerda
         if value < node.data:
             node.left = self.remove(value, node.left)
+        # Se o valor for maior, desce à direita
         elif value > node.data:
             node.right = self.remove(value, node.right)
+        # Se não for nem menor, nem maior, encontramos! Vamos remover...
         else:
             if node.left is None:
                 return node.right
             elif node.right is None:
                 return node.left
             else:
+                # Substituto é o sucessor do valor a ser removido
                 substitute = self.min(node.right)
+                # Ao invés de trocar a posição dos nós, troca o valor
                 node.data = substitute
+                # Depois, remove o substituto da subárvore à direita
                 node.right = self.remove(substitute, node.right)
+
         return node
         
     
-    # def search(self, value, node=0):
-    #     if node == 0:
+    # def search(self, value, node=ROOT):
+    #     if node == ROOT:
     #         node = self.root
     #     if node is None or node.data == value:
     #         return BinarySearchTree(node)
