@@ -1,5 +1,6 @@
 import random
 from tree import BinarySearchTree
+import utils
 
 random.seed(77)
 
@@ -25,6 +26,7 @@ def extended_tree():
     return tree
 
 bst = extended_tree()
+utils.save_graphviz(bst, "extended_tree")
 bst.inorder_traversal()
 
 # testar remoção da árvore
