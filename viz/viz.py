@@ -1,4 +1,4 @@
-import graphviz
+import graphviz 
 
 dot = graphviz.Digraph(comment='The Round Table')
 
@@ -9,6 +9,4 @@ dot.node('L', 'Sir Lancelot the Brave')
 dot.edges(['AB', 'AL'])
 dot.edge('B', 'L', constraint='false')
 
-# doctest_mark_exe()
-
-dot.render('viz/round-table.gv', view=True)
+dot.render('viz/round-table.gv', view=True).replace('\\', '/')

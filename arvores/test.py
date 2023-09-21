@@ -4,7 +4,7 @@ from tree import BinarySearchTree
 random.seed(77)
 
 def random_tree(size=42):
-    values = random.sample(range(1, 1000), 42)
+    values = random.sample(range(1, 1000), size)
     tree = BinarySearchTree()
     for v in values:
         tree.insert(v)
